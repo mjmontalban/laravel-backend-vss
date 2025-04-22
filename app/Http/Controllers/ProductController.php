@@ -86,6 +86,13 @@ class ProductController extends Controller
         }
     }
 
+    public function get_product(Request $request) {
+        $id = $request->id;
+        $product = Product::find($id);
+
+        return ProductResource::make($product);
+    }
+
 
     public function getProducts(Request $request) {
         $limit = $request->limit;

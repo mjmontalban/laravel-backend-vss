@@ -93,6 +93,8 @@ class ProductController extends Controller
         $userId = $request->session()->get('userId');
         $products = Product::query()
         ->where('user_id', $userId)
+        ->where('is_deleted', 0)
+
         ->take($limit)->skip($offset)->get();
 
         return ProductResource::collection($products);
